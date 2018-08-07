@@ -8,7 +8,8 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}\\Hexadig\\bin\\www"
+            "program": "${workspaceFolder}\\Hexadig\\bin\\www",
+            "console": "integratedTerminal"
         }
     ]
 }

@@ -7,6 +7,7 @@ var favicon = require('serve-favicon')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var trackerApi = require('./routes/api/tracker');
 
 var app = express();
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
@@ -16,14 +17,19 @@ app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-app.use(logger('dev'));
+app.use(logger('combined'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+app.get('/ping', function (req, res) {
+  res.json({status: "ok"});
+})
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/api',trackerApi);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -42,3 +48,4 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+console.log("Test");
