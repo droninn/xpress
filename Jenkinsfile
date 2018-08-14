@@ -21,7 +21,7 @@ pipeline {
         stage('Create archive'){
           steps{
             dir('Hexadig'){
-                zip(zipfile: 'build/hexadig.zip')
+                zip(zipFile: 'build/hexadig.zip',archive: true)                
             }
           }
         }
