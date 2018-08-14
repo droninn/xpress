@@ -19,8 +19,10 @@ pipeline {
             }
         }
         stage('Create archive'){
-          dir('Hexadig'){
-              zip(zipfile: 'build/hexadig.zip')
+          steps{
+            dir('Hexadig'){
+                zip(zipfile: 'build/hexadig.zip')
+            }
           }
         }
     }
